@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="KUZEYModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Firma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirmaAdi" Type="nvarchar" MaxLength="150" />
+          <Property Name="FirmaAdres" Type="nvarchar" MaxLength="150" />
+          <Property Name="FirmaTelefon" Type="nvarchar" MaxLength="150" />
+          <Property Name="FirmaIlgili" Type="nvarchar" MaxLength="150" />
+          <Property Name="FirmaMail" Type="nvarchar" MaxLength="150" />
+          <Property Name="FirmaGSM" Type="nvarchar" MaxLength="150" />
+          <Property Name="FirmaIlce" Type="nvarchar" MaxLength="150" />
+          <Property Name="FirmaIl" Type="nvarchar" MaxLength="150" />
+          <Property Name="FirmaAnlasma" Type="nvarchar(max)" />
+          <Property Name="FirmaOdemeTip" Type="int" />
+        </EntityType>
+        <EntityType Name="Islemler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firmaid" Type="varchar" MaxLength="50" />
+          <Property Name="Tarih" Type="datetime" />
+          <Property Name="FirmaPersonel" Type="varchar" MaxLength="50" />
+          <Property Name="ACGrafi" Type="varchar" MaxLength="50" />
+          <Property Name="Odyo" Type="varchar" MaxLength="50" />
+          <Property Name="SFT" Type="varchar" MaxLength="50" />
+          <Property Name="EKG" Type="varchar" MaxLength="50" />
+          <Property Name="Hemogram" Type="varchar" MaxLength="50" />
+          <Property Name="Biyokimya" Type="varchar" MaxLength="50" />
+          <Property Name="Burun" Type="varchar" MaxLength="50" />
+          <Property Name="Bogaz" Type="varchar" MaxLength="50" />
+          <Property Name="Gaita" Type="varchar" MaxLength="50" />
+          <Property Name="Tetanoz" Type="varchar" MaxLength="50" />
+          <Property Name="KanGrubu" Type="varchar" MaxLength="50" />
+          <Property Name="Hepatit" Type="varchar" MaxLength="50" />
+          <Property Name="Portor" Type="varchar" MaxLength="50" />
+          <Property Name="Idrar" Type="varchar" MaxLength="50" />
+          <Property Name="Aciklama" Type="varchar(max)" />
+          <Property Name="Nakit" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Pos" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Ekleyen" Type="varchar" MaxLength="50" />
+          <Property Name="EklemeTarihi" Type="datetime" />
+          <Property Name="Kontrol" Type="varchar" MaxLength="50" />
+          <Property Name="KontrolTarihi" Type="datetime" />
+          <Property Name="Muhasebelestiren" Type="varchar" MaxLength="50" />
+          <Property Name="MuhTarihi" Type="datetime" />
+          <Property Name="FaturaTarihi" Type="datetime" />
+          <Property Name="FaturaNo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciAd" Type="nvarchar" MaxLength="20" />
+          <Property Name="KullaniciSifre" Type="nvarchar" MaxLength="20" />
+          <Property Name="YetkiTip" Type="int" />
+          <Property Name="Aktif" Type="bit" />
+        </EntityType>
+        <EntityType Name="Sbt_OdemeTip">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OdemeTip" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Sbt_YetkiTip">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Yetki" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KUZEY.dbo.VW_FIRMA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_FIRMA">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="FirmaAdi" Type="nvarchar" MaxLength="150" />
+          <Property Name="FirmaAdres" Type="nvarchar" MaxLength="150" />
+          <Property Name="FirmaTelefon" Type="nvarchar" MaxLength="150" />
+          <Property Name="FirmaIlgili" Type="nvarchar" MaxLength="150" />
+          <Property Name="FirmaMail" Type="nvarchar" MaxLength="150" />
+          <Property Name="FirmaGSM" Type="nvarchar" MaxLength="150" />
+          <Property Name="FirmaIlce" Type="nvarchar" MaxLength="150" />
+          <Property Name="FirmaIl" Type="nvarchar" MaxLength="150" />
+          <Property Name="FirmaAnlasma" Type="nvarchar(max)" />
+          <Property Name="FirmaOdemeTip" Type="int" />
+          <Property Name="OdemeTip" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KUZEY.dbo.VW_KULLANICI' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_KULLANICI">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="KullaniciAd" Type="nvarchar" MaxLength="20" />
+          <Property Name="KullaniciSifre" Type="nvarchar" MaxLength="20" />
+          <Property Name="YetkiTip" Type="int" />
+          <Property Name="Aktif" Type="bit" />
+          <Property Name="Yetki" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityContainer Name="KUZEYModelStoreContainer">
+          <EntitySet Name="Firma" EntityType="Self.Firma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Islemler" EntityType="Self.Islemler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sbt_OdemeTip" EntityType="Self.Sbt_OdemeTip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sbt_YetkiTip" EntityType="Self.Sbt_YetkiTip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VW_FIRMA" EntityType="Self.VW_FIRMA" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_FIRMA].[Id] AS [Id], 
+    [VW_FIRMA].[FirmaAdi] AS [FirmaAdi], 
+    [VW_FIRMA].[FirmaAdres] AS [FirmaAdres], 
+    [VW_FIRMA].[FirmaTelefon] AS [FirmaTelefon], 
+    [VW_FIRMA].[FirmaIlgili] AS [FirmaIlgili], 
+    [VW_FIRMA].[FirmaMail] AS [FirmaMail], 
+    [VW_FIRMA].[FirmaGSM] AS [FirmaGSM], 
+    [VW_FIRMA].[FirmaIlce] AS [FirmaIlce], 
+    [VW_FIRMA].[FirmaIl] AS [FirmaIl], 
+    [VW_FIRMA].[FirmaAnlasma] AS [FirmaAnlasma], 
+    [VW_FIRMA].[FirmaOdemeTip] AS [FirmaOdemeTip], 
+    [VW_FIRMA].[OdemeTip] AS [OdemeTip]
+    FROM [dbo].[VW_FIRMA] AS [VW_FIRMA]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_KULLANICI" EntityType="Self.VW_KULLANICI" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_KULLANICI].[Id] AS [Id], 
+    [VW_KULLANICI].[KullaniciAd] AS [KullaniciAd], 
+    [VW_KULLANICI].[KullaniciSifre] AS [KullaniciSifre], 
+    [VW_KULLANICI].[YetkiTip] AS [YetkiTip], 
+    [VW_KULLANICI].[Aktif] AS [Aktif], 
+    [VW_KULLANICI].[Yetki] AS [Yetki]
+    FROM [dbo].[VW_KULLANICI] AS [VW_KULLANICI]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KUZEYModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Firma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirmaAdi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaAdres" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaTelefon" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaIlgili" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaMail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaGSM" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaIlce" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaIl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaAnlasma" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaOdemeTip" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Islemler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firmaid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+          <Property Name="FirmaPersonel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACGrafi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Odyo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SFT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EKG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Hemogram" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Biyokimya" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Burun" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Bogaz" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gaita" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tetanoz" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KanGrubu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Hepatit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Portor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Idrar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Nakit" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Pos" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Ekleyen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EklemeTarihi" Type="DateTime" Precision="3" />
+          <Property Name="Kontrol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KontrolTarihi" Type="DateTime" Precision="3" />
+          <Property Name="Muhasebelestiren" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MuhTarihi" Type="DateTime" Precision="3" />
+          <Property Name="FaturaTarihi" Type="DateTime" Precision="3" />
+          <Property Name="FaturaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciAd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="KullaniciSifre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="YetkiTip" Type="Int32" />
+          <Property Name="Aktif" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="KUZEYEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Firma" EntityType="Self.Firma" />
+          <EntitySet Name="Islemler" EntityType="Self.Islemler" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" />
+          <EntitySet Name="Sbt_OdemeTip" EntityType="KUZEYModel.Sbt_OdemeTip" />
+          <EntitySet Name="Sbt_YetkiTip" EntityType="KUZEYModel.Sbt_YetkiTip" />
+          <EntitySet Name="VW_FIRMA" EntityType="KUZEYModel.VW_FIRMA" />
+          <EntitySet Name="VW_KULLANICI" EntityType="KUZEYModel.VW_KULLANICI" />
+        </EntityContainer>
+        <EntityType Name="Sbt_OdemeTip">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OdemeTip" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Sbt_YetkiTip">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Yetki" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VW_FIRMA">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="FirmaAdi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaAdres" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaTelefon" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaIlgili" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaMail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaGSM" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaIlce" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaIl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaAnlasma" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaOdemeTip" Type="Int32" />
+          <Property Name="OdemeTip" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VW_KULLANICI">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="KullaniciAd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="KullaniciSifre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="YetkiTip" Type="Int32" />
+          <Property Name="Aktif" Type="Boolean" />
+          <Property Name="Yetki" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KUZEYModelStoreContainer" CdmEntityContainer="KUZEYEntities">
+          <EntitySetMapping Name="Firma">
+            <EntityTypeMapping TypeName="KUZEYModel.Firma">
+              <MappingFragment StoreEntitySet="Firma">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirmaAdi" ColumnName="FirmaAdi" />
+                <ScalarProperty Name="FirmaAdres" ColumnName="FirmaAdres" />
+                <ScalarProperty Name="FirmaTelefon" ColumnName="FirmaTelefon" />
+                <ScalarProperty Name="FirmaIlgili" ColumnName="FirmaIlgili" />
+                <ScalarProperty Name="FirmaMail" ColumnName="FirmaMail" />
+                <ScalarProperty Name="FirmaGSM" ColumnName="FirmaGSM" />
+                <ScalarProperty Name="FirmaIlce" ColumnName="FirmaIlce" />
+                <ScalarProperty Name="FirmaIl" ColumnName="FirmaIl" />
+                <ScalarProperty Name="FirmaAnlasma" ColumnName="FirmaAnlasma" />
+                <ScalarProperty Name="FirmaOdemeTip" ColumnName="FirmaOdemeTip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Islemler">
+            <EntityTypeMapping TypeName="KUZEYModel.Islemler">
+              <MappingFragment StoreEntitySet="Islemler">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Firmaid" ColumnName="Firmaid" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="FirmaPersonel" ColumnName="FirmaPersonel" />
+                <ScalarProperty Name="ACGrafi" ColumnName="ACGrafi" />
+                <ScalarProperty Name="Odyo" ColumnName="Odyo" />
+                <ScalarProperty Name="SFT" ColumnName="SFT" />
+                <ScalarProperty Name="EKG" ColumnName="EKG" />
+                <ScalarProperty Name="Hemogram" ColumnName="Hemogram" />
+                <ScalarProperty Name="Biyokimya" ColumnName="Biyokimya" />
+                <ScalarProperty Name="Burun" ColumnName="Burun" />
+                <ScalarProperty Name="Bogaz" ColumnName="Bogaz" />
+                <ScalarProperty Name="Gaita" ColumnName="Gaita" />
+                <ScalarProperty Name="Tetanoz" ColumnName="Tetanoz" />
+                <ScalarProperty Name="KanGrubu" ColumnName="KanGrubu" />
+                <ScalarProperty Name="Hepatit" ColumnName="Hepatit" />
+                <ScalarProperty Name="Portor" ColumnName="Portor" />
+                <ScalarProperty Name="Idrar" ColumnName="Idrar" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Nakit" ColumnName="Nakit" />
+                <ScalarProperty Name="Pos" ColumnName="Pos" />
+                <ScalarProperty Name="Ekleyen" ColumnName="Ekleyen" />
+                <ScalarProperty Name="EklemeTarihi" ColumnName="EklemeTarihi" />
+                <ScalarProperty Name="Kontrol" ColumnName="Kontrol" />
+                <ScalarProperty Name="KontrolTarihi" ColumnName="KontrolTarihi" />
+                <ScalarProperty Name="Muhasebelestiren" ColumnName="Muhasebelestiren" />
+                <ScalarProperty Name="MuhTarihi" ColumnName="MuhTarihi" />
+                <ScalarProperty Name="FaturaTarihi" ColumnName="FaturaTarihi" />
+                <ScalarProperty Name="FaturaNo" ColumnName="FaturaNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanicilar">
+            <EntityTypeMapping TypeName="KUZEYModel.Kullanicilar">
+              <MappingFragment StoreEntitySet="Kullanicilar">
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="YetkiTip" ColumnName="YetkiTip" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="KullaniciAd" ColumnName="KullaniciAd" />
+                <ScalarProperty Name="KullaniciSifre" ColumnName="KullaniciSifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sbt_OdemeTip">
+            <EntityTypeMapping TypeName="KUZEYModel.Sbt_OdemeTip">
+              <MappingFragment StoreEntitySet="Sbt_OdemeTip">
+                <ScalarProperty Name="OdemeTip" ColumnName="OdemeTip" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sbt_YetkiTip">
+            <EntityTypeMapping TypeName="KUZEYModel.Sbt_YetkiTip">
+              <MappingFragment StoreEntitySet="Sbt_YetkiTip">
+                <ScalarProperty Name="Yetki" ColumnName="Yetki" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_FIRMA">
+            <EntityTypeMapping TypeName="KUZEYModel.VW_FIRMA">
+              <MappingFragment StoreEntitySet="VW_FIRMA">
+                <ScalarProperty Name="OdemeTip" ColumnName="OdemeTip" />
+                <ScalarProperty Name="FirmaOdemeTip" ColumnName="FirmaOdemeTip" />
+                <ScalarProperty Name="FirmaAnlasma" ColumnName="FirmaAnlasma" />
+                <ScalarProperty Name="FirmaIl" ColumnName="FirmaIl" />
+                <ScalarProperty Name="FirmaIlce" ColumnName="FirmaIlce" />
+                <ScalarProperty Name="FirmaGSM" ColumnName="FirmaGSM" />
+                <ScalarProperty Name="FirmaMail" ColumnName="FirmaMail" />
+                <ScalarProperty Name="FirmaIlgili" ColumnName="FirmaIlgili" />
+                <ScalarProperty Name="FirmaTelefon" ColumnName="FirmaTelefon" />
+                <ScalarProperty Name="FirmaAdres" ColumnName="FirmaAdres" />
+                <ScalarProperty Name="FirmaAdi" ColumnName="FirmaAdi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_KULLANICI">
+            <EntityTypeMapping TypeName="KUZEYModel.VW_KULLANICI">
+              <MappingFragment StoreEntitySet="VW_KULLANICI">
+                <ScalarProperty Name="Yetki" ColumnName="Yetki" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="YetkiTip" ColumnName="YetkiTip" />
+                <ScalarProperty Name="KullaniciSifre" ColumnName="KullaniciSifre" />
+                <ScalarProperty Name="KullaniciAd" ColumnName="KullaniciAd" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

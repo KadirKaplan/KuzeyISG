@@ -1,0 +1,6 @@
+{
+"sunucuAdres":"HP",
+"VeritabaniAdi":"KUZEY",
+"username":"sa",
+"parola":"Mimax2323362"
+}
